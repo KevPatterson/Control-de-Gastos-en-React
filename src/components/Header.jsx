@@ -1,16 +1,39 @@
-import React from 'react'
-import NuevoPresupuesto from './NuevoPresupuesto'
+import React from 'react';
+import PropTypes from 'prop-types'; // Importación para validar props
+import NuevoPresupuesto from './NuevoPresupuesto';
+import ControlPresupuesto from './ControlPresupuesto';
 
-const Header = ({presupuestos, setPresupuestos}) => {
-  return (
-    <header>
-        <h1>Planificador de Gastos</h1>
-        <NuevoPresupuesto 
-            presupuestos={presupuestos}
-            setPresupuestos={setPresupuestos}
-        />
-    </header>
-  )
-}
+const Header = ({ 
+    presupuesto, 
+    setPresupuesto, 
+    isValidPresupuesto, 
+    setIsValidPresupuesto 
+}) => {
+    return (
+        <header>
+            <h1>Planificador de Gastos</h1>
 
-export default Header
+            {isValidPresupuesto ? (
+                <ControlPresupuesto 
+                presupuesto={presupuesto}
+                />
+            ) : (
+                <NuevoPresupuesto 
+                    presupuesto={presupuesto}
+                    setPresupuesto={setPresupuesto}
+                    setIsValidPresupuesto={setIsValidPresupuesto}
+                />
+            )}
+        </header>
+    );
+};
+
+// Validación de props
+Header.propTypes = {
+    presupuesto: PropTypes.number.isRequired,
+    setPresupuesto: PropTypes.func.isRequired,
+    isValidPresupuesto: PropTypes.bool.isRequired,
+    setIsValidPresupuesto: PropTypes.func.isRequired
+};
+
+export default Header;
