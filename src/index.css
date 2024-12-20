@@ -145,9 +145,10 @@ header h1 {
     border-left: 5px solid #b91c1c;
     color: #b91c1c;
 }
+/*
 .alerta.success {
 }
-
+*/
 .contenedor {
     width: 90%;
     max-width: 80rem;
@@ -403,4 +404,337 @@ body .modal {
     align-items: center;
     font-size: 2.4rem;
     text-align: right;
+}
+
+/* Historial de Presupuestos */
+.historial-presupuestos {
+    background-color: var(--blanco);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin: 2rem 0;
+}
+
+.titulo-historial {
+    font-size: 2.4rem;
+    color: var(--gris-oscuro);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: 700;
+}
+
+.lista-presupuestos {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .lista-presupuestos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.card-presupuesto {
+    background-color: var(--gris-claro);
+    padding: 2rem;
+    border-radius: 0.8rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-presupuesto:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card-presupuesto p {
+    font-size: 1.6rem;
+    color: var(--gris-oscuro);
+    margin: 0.5rem 0;
+}
+
+.card-presupuesto strong {
+    font-weight: 700;
+    color: var(--gris-oscuro);
+}
+
+.card-presupuesto span {
+    color: var(--azul);
+    font-weight: 700;
+}
+
+.sin-presupuestos {
+    font-size: 1.8rem;
+    color: var(--gris);
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.guardar-presupuesto-container {
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  .guardar-presupuesto-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.guardar-presupuesto-btn,
+.ver-presupuesto-btn {
+    background-color: var(--azul);
+    color: var(--blanco);
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.guardar-presupuesto-btn:hover,
+.ver-presupuesto-btn:hover {
+    background-color: var(--azul-hover);
+}
+
+.volver-container {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.volver-btn {
+    background-color: var(--gris);
+    color: var(--blanco);
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.volver-btn:hover {
+    background-color: var(--gris-oscuro);
+}
+
+/* Contenedor principal de los recordatorios */
+.recordatorios {
+    margin: 2rem 0;
+    padding: 2rem;
+    background-color: var(--gris-claro);
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.recordatorios h2 {
+    font-size: 2.4rem;
+    font-weight: bold;
+    color: var(--gris-oscuro);
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.recordatorios ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.recordatorios li {
+    background-color: var(--blanco);
+    border: 1px solid var(--gris);
+    border-radius: 0.8rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.recordatorios li p {
+    margin: 0;
+    font-size: 1.6rem;
+    color: var(--gris-oscuro);
+}
+
+.recordatorios li p span {
+    font-weight: bold;
+    color: var(--azul);
+}
+
+/* Contenedor principal de las notificaciones */
+.notificaciones {
+    margin: 3rem 0;
+    padding: 2rem;
+    background-color: var(--gris-claro);
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.notificaciones h2 {
+    font-size: 2.4rem;
+    font-weight: bold;
+    color: var(--gris-oscuro);
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.notificaciones p {
+    font-size: 1.8rem;
+    color: var(--gris);
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.notificaciones ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.notificaciones li {
+    background-color: var(--blanco);
+    border: 1px solid var(--gris);
+    border-radius: 0.8rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.notificaciones li p {
+    margin: 0;
+    font-size: 1.6rem;
+    color: var(--gris-oscuro);
+}
+
+/* Estilo para alertas */
+.alerta-gasto {
+    background-color: #ffe4e6;
+    border-left: 5px solid #dc2626;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    border-radius: 1rem;
+    color: #b91c1c;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Contenedor principal para la esquina superior derecha */
+.top-right {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    z-index: 1000;
+}
+
+/* Iconos */
+.icon {
+    position: relative;
+    width: 3.5rem;
+    height: 3.5rem;
+    cursor: pointer;
+    background-color: var(--azul);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: var(--blanco);
+    font-size: 2rem;
+    transition: background-color 0.3s ease;
+}
+
+.icon:hover {
+    background-color: #255ea5;
+}
+
+/* Indicador de cantidad */
+.icon .badge {
+    position: absolute;
+    top: -0.5rem;
+    right: -0.5rem;
+    background-color: #dc2626;
+    color: var(--blanco);
+    width: 1.8rem;
+    height: 1.8rem;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Menú desplegable */
+.dropdown-menu {
+    position: absolute;
+    top: 4.5rem;
+    right: 0;
+    background-color: var(--blanco);
+    border: 1px solid var(--gris);
+    border-radius: 0.8rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 20rem;
+    max-height: 30rem;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+}
+
+.dropdown-menu.active {
+    display: block;
+}
+
+/* Estilo para los elementos de la lista */
+.dropdown-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 1rem;
+}
+
+.dropdown-menu ul li {
+    border-bottom: 1px solid var(--gris-claro);
+    padding: 0.8rem 0;
+    font-size: 1.4rem;
+    color: var(--gris-oscuro);
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.dropdown-menu ul li:last-child {
+    border-bottom: none;
+}
+
+.dropdown-menu ul li p {
+    margin: 0;
+}
+
+.dropdown-menu ul li span {
+    font-size: 1.2rem;
+    color: var(--gris);
+}
+
+/* Sin notificaciones o recordatorios */
+.dropdown-menu p {
+    text-align: center;
+    color: var(--gris);
+    font-size: 1.4rem;
+    padding: 1rem 0;
 }

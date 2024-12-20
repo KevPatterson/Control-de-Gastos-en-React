@@ -1,17 +1,29 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import CloseModal from '../img/cerrar.svg';
 import Mensaje from './Mensaje';
 
-const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto }) => {
+const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto, gastoEditar, setGastoEditar}) => {
+  //States
   const [mensaje, setMensaje] = useState('');
-
   const [nombre, setNombre] = useState('');
   const [cantidad, setCantidad] = useState('');
   const [categoria, setCategoria] = useState('');
+  const [fecha, setFecha] = useState('');
+  const [id, setId] = useState('');
+
+  useEffect(() => {
+    if (Object.keys(gastoEditar).length > 0) {
+      setNombre(gastoEditar.nombre)
+      setCantidad(gastoEditar.cantidad)
+      setCategoria(gastoEditar.categoria)
+      setId(gastoEditar.id)
+      setFecha(gastoEditar.fecha)
+    }
+  }, [])
 
   const ocultarModal = () => {
     setAnimarModal(false);
-
+    setGastoEditar({})
     setTimeout(() => {
       setModal(false);
     }, 500); // Ajustar tiempo según la duración de la animación
@@ -37,10 +49,10 @@ const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto }) => {
     // Enviar datos al componente padre
     guardarGasto({
       nombre,
-      cantidad: Number(cantidad), // Asegurarse de que sea un número
+      cantidad,
       categoria,
-      id: `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`, // ID único
-      fecha: new Date().toISOString(), // Fecha actual
+      id,
+      fecha,
     });
 
     // Cerrar el modal tras guardar
@@ -62,7 +74,7 @@ const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto }) => {
         className={`formulario ${animarModal ? 'animar' : 'cerrar'}`}
         onSubmit={handleSubmit}
       >
-        <legend>Nuevo Gasto</legend>
+        <legend>{gastoEditar.nombre ? 'Editar Gasto' : 'Nuevo Gasto'}</legend>
         {mensaje && <Mensaje tipo="error">{mensaje}</Mensaje>}
 
         <div className="campo">
@@ -100,20 +112,18 @@ const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto }) => {
             aria-required="true"
           >
             <option value="">-- Seleccione una categoría --</option>
-            <option value="gastos-familiares">Gastos Familiares</option>
-            <option value="gastos-personales">Gastos Personales</option>
-            <option value="gastos-educacionales">Gastos Educativos</option>
-            <option value="gastos-de-viaje">Gastos de Viaje</option>
-            <option value="ahorros">Ahorros</option>
-            <option value="comida">Comida</option>
-            <option value="salud">Salud</option>
-            <option value="ocio-vicios">Ocio y Vicios</option>
-            <option value="suscripciones">Suscripciones</option>
-            <option value="otros">Otros</option>
+            <option value="Familiar">Gastos Familiares</option>
+            <option value="Personal">Gastos Personales</option>
+            <option value="Ahorros">Ahorros</option>
+            <option value="Comida">Comida</option>
+            <option value="Salud">Salud</option>
+            <option value="Ocio">Ocio</option>
+            <option value="Suscripciones">Suscripciones</option>
+            <option value="Otros">Otros</option>
           </select>
         </div>
 
-        <input type="submit" value="Añadir Gasto" />
+        <input type="submit" value={gastoEditar.nombre ? 'Guardar Cambios' : 'Añadir Gasto'} />
       </form>
     </div>
   );

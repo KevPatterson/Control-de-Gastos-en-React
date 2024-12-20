@@ -33,7 +33,6 @@ export const capitalizeText = (text) => {
 };
 
 //Validar un email - Verifica si una cadena es un correo electrónico válido.
-
 export const isValidEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
@@ -125,10 +124,17 @@ export const deepClone = (obj) => {
 };
 
 //Formatear fechas - Convierte una fecha a un formato amigable.
-export const formatDate = (date, locale = 'en-US', options = {}) => {
+export const formatDate = (date, locale = 'es-ES', options = {}) => {
     const defaultOptions = { year: 'numeric', month: 'long', day: 'numeric' };
     return new Date(date).toLocaleDateString(locale, { ...defaultOptions, ...options });
 };
+
+//Otro para Formatear fechas
+export const formatFecha = fecha => {
+    const fechaNueva = new Date(fecha);
+    const opciones = { year: 'numeric', month: 'long', day: '2-digit' };
+    return fechaNueva.toLocaleDateString('es-ES', opciones);
+}
 
 //Obtener el valor de una consulta en la URL - Extrae parámetros de consulta (`query parameters`) de una URL.
 export const getQueryParam = (key) => {
